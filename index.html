@@ -91,6 +91,45 @@ button {
     z-index: 10;
 }
 
+#dance-button {
+    margin-top: 16px;
+    background: #8d68c5;
+}
+
+#dance-surprise {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(26, 19, 32, 0.78);
+}
+
+#dance-surprise[hidden] {
+    display: none;
+}
+
+#dance-surprise img {
+    display: block;
+    width: min(100%, 480px);
+    max-height: 80vh;
+    border-radius: 20px;
+    object-fit: contain;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    animation: appear 0.35s ease;
+}
+
+#close-dance {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 8px 15px;
+    font-size: 30px;
+    line-height: 1;
+}
+
 #result {
     display: none;
     margin-top: 25px;
@@ -147,6 +186,8 @@ button {
 
     </div>
 
+    <button id="dance-button" type="button">Surprise danse !</button>
+
     <div id="result">
         UR CUTE! 💗🥰
         <p style="font-size: 20px; margin-top: 12px;">
@@ -156,6 +197,11 @@ button {
 
 </div>
 
+<div id="dance-surprise" role="dialog" aria-modal="true" aria-label="Surprise GIF Fortnite" hidden>
+    <button id="close-dance" type="button" aria-label="Fermer">×</button>
+    <img src="https://media.tenor.com/KA7FnxhIaloAAAAM/fortnite-fortnite-dance.gif" alt="Un personnage Fortnite danse">
+</div>
+
 <script>
 
 const yesBtn = document.getElementById("yes");
@@ -163,6 +209,33 @@ const noBtn = document.getElementById("no");
 const buttons = document.getElementById("buttons");
 const result = document.getElementById("result");
 const question = document.getElementById("question");
+const danceButton = document.getElementById("dance-button");
+const danceSurprise = document.getElementById("dance-surprise");
+const closeDanceButton = document.getElementById("close-dance");
+
+danceButton.addEventListener("click", function() {
+    danceSurprise.hidden = false;
+    closeDanceButton.focus();
+});
+
+function closeDanceSurprise() {
+    danceSurprise.hidden = true;
+    danceButton.focus();
+}
+
+closeDanceButton.addEventListener("click", closeDanceSurprise);
+
+danceSurprise.addEventListener("click", function(event) {
+    if (event.target === danceSurprise) {
+        closeDanceSurprise();
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && !danceSurprise.hidden) {
+        closeDanceSurprise();
+    }
+});
 
 // Le bouton NO esquive la souris
 function moveNoButton() {
