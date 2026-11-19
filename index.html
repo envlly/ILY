@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do you love me?</title>
+<title>Do you love Alicia?</title>
 
 <style>
 * {
@@ -31,9 +31,18 @@ body {
 }
 
 .illustration {
-    font-size: 100px;
     margin-bottom: 20px;
     animation: float 2s infinite ease-in-out;
+}
+
+.illustration img {
+    display: block;
+    width: min(100%, 420px);
+    max-height: 320px;
+    margin: 0 auto;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(64, 44, 52, 0.18);
 }
 
 @keyframes float {
@@ -124,7 +133,9 @@ button {
 
 <div class="container">
 
-    <div class="illustration">🐻💕🐰</div>
+    <div class="illustration">
+        <img src="assets/snow-leopard-mei-mei.jpg" alt="Deux léopards des neiges">
+    </div>
 
     <h1 id="question">Do you love me?</h1>
 
@@ -137,9 +148,9 @@ button {
     </div>
 
     <div id="result">
-        I knew it!! 💗🥰
+        UR CUTE! 💗🥰
         <p style="font-size: 20px; margin-top: 12px;">
-            Love you forever! 💕
+            I LOVE YOU FOREVER! 💕
         </p>
     </div>
 
